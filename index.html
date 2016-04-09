@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="app.css"/>
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-aria/angular-aria.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.js"></script>
+    <script src="./bower_components/angular-material/angular-material.js"></script>
+
+    <script src="./bower_components/firebase/firebase.js"></script>
+    <script src="./bower_components/angularfire/dist/angularfire.js"></script>
+
+    <script src="app.js"></script>
+
+</head>
+<body>
+<div  ng-app="myapp" ng-controller="myctrl">
+    <span class="md-display-3">talkboard</span>
+    <span class="md-body-1">an education app</span>
+    <hr />
+
+
+    <label  for="bgcolor">board color</label>
+    <select id="bgcolor" ng-change="warning = true" ng-model="color" >
+        <option value="white">white</option>
+        <option value="darkgray">black</option>
+        <option value="lightpink">red</option>
+        <option value="lightblue">blue</option>
+        <option value="lightgreen">green</option>
+    </select>
+
+    <label for="writingcolor">writing color</label>
+    <select id="writingcolor" ng-model="writingcolor" >
+        <option value="white">white</option>
+        <option value="black">black</option>
+        <option value="darkred">red</option>
+        <option value="blue">blue</option>
+        <option value="green">green</option>
+    </select>
+
+    <md-button class="md-raised md-primary" ng-click="startapp();">start app / clear screen</md-button>
+    <br />
+    <p class="warning tiny" ng-show="warning">you must press the start app button to proceed your data will lose</p>
+
+
+    <br />
+    <canvas class="pixel" ng-repeat="a in arr"
+            ng-style="{'backgroundColor': arr[$index].backgroundColor}"
+            ng-mousedown="down()"
+            ng-mouseup="up()"
+            ng-mouseenter="change($index);">
+
+    </canvas>
+
+
+    <pre>myStyle={{myStyle}}</pre>
+
+
+</div>
+</body>
+</html>
